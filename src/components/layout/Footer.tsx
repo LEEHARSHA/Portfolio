@@ -1,6 +1,14 @@
 import { motion } from "framer-motion";
-import { navLinks, socialLinks } from "../../data/contact";
+import {
+  navLinks,
+  socialLinks,
+  companyTagline,
+  contactEmail,
+  contactPhones,
+  footerServices,
+} from "../../data/contact";
 import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
+import { Mail, Phone } from "lucide-react";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   Github: FaGithub,
@@ -17,11 +25,30 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div className="md:col-span-2">
               <a href="#hero" className="font-display text-3xl font-bold tracking-tight">
-                RUKD<span className="gradient-text">.</span>
+                RUKD Technologies
               </a>
-              <p className="mt-4 text-muted max-w-sm leading-relaxed">
-                Building Digital Products That Matter. Premium software development for ambitious companies worldwide.
-              </p>
+              <p className="mt-4 text-muted max-w-md leading-relaxed">{companyTagline}</p>
+
+              <div className="mt-6 space-y-3">
+                <a
+                  href={`mailto:${contactEmail}`}
+                  className="flex items-center gap-3 text-sm text-muted hover:text-white transition-colors"
+                >
+                  <Mail size={16} className="text-primary shrink-0" />
+                  {contactEmail}
+                </a>
+                {contactPhones.map((phone) => (
+                  <a
+                    key={phone}
+                    href={`tel:${phone}`}
+                    className="flex items-center gap-3 text-sm text-muted hover:text-white transition-colors"
+                  >
+                    <Phone size={16} className="text-primary shrink-0" />
+                    {phone}
+                  </a>
+                ))}
+              </div>
+
               <div className="flex gap-4 mt-6">
                 {socialLinks.map((social) => {
                   const Icon = iconMap[social.icon];
@@ -61,26 +88,17 @@ export function Footer() {
             <div>
               <h4 className="font-display font-semibold mb-4">Services</h4>
               <ul className="space-y-3 text-sm text-muted">
-                <li>Web Development</li>
-                <li>Mobile Apps</li>
-                <li>AI Solutions</li>
-                <li>Cloud Services</li>
+                {footerServices.map((service) => (
+                  <li key={service}>{service}</li>
+                ))}
               </ul>
             </div>
           </div>
 
-          <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="pt-8 border-t border-white/5 text-center">
             <p className="text-muted text-sm">
-              &copy; {new Date().getFullYear()} RUKD Technologies. All rights reserved.
+              &copy; 2026 RUKD Technologies. All Rights Reserved.
             </p>
-            <div className="flex gap-6 text-sm text-muted">
-              <a href="#" className="hover:text-white transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Terms of Service
-              </a>
-            </div>
           </div>
         </div>
       </div>

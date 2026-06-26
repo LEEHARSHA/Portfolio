@@ -4,11 +4,8 @@ import {
   Smartphone,
   Palette,
   Brain,
-  Cloud,
-  Zap,
   Code2,
   Plug,
-  Shield,
   type LucideIcon,
 } from "lucide-react";
 import { SectionHeading, GlassCard } from "../components/ui/SectionHeading";
@@ -20,11 +17,8 @@ const iconMap: Record<string, LucideIcon> = {
   Smartphone,
   Palette,
   Brain,
-  Cloud,
-  Zap,
   Code2,
   Plug,
-  Shield,
 };
 
 export function Services() {

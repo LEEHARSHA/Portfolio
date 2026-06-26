@@ -1,14 +1,21 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useRef } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown, ArrowRight } from "lucide-react";
 import { MagneticButton } from "../components/ui/MagneticButton";
-import { GradientText } from "../components/ui/SectionHeading";
+import { GradientText, GlassCard } from "../components/ui/SectionHeading";
+import { AnimatedCounter } from "../components/ui/AnimatedCounter";
+import { stats } from "../data/stats";
+import { companyTagline } from "../data/contact";
+import { useInView } from "../hooks/useInView";
 
 const HeroScene = lazy(() =>
   import("../three/HeroScene").then((m) => ({ default: m.HeroScene }))
 );
 
 export function Hero() {
+  const statsRef = useRef<HTMLDivElement>(null);
+  const statsInView = useInView(statsRef);
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <Suspense fallback={null}>
@@ -45,7 +52,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 1.3 }}
           className="text-lg sm:text-xl md:text-2xl text-muted max-w-2xl mx-auto mb-10 leading-relaxed font-light"
         >
-          Building Digital Products That Matter.
+          {companyTagline}
         </motion.p>
 
         <motion.div
@@ -57,9 +64,31 @@ export function Hero() {
           <MagneticButton href="#contact" size="lg">
             Start Your Project <ArrowRight size={18} />
           </MagneticButton>
-          <MagneticButton href="#portfolio" variant="secondary" size="lg">
+          <MagneticButton href="#projects" variant="secondary" size="lg">
             View Our Work
           </MagneticButton>
+        </motion.div>
+
+        <motion.div
+          ref={statsRef}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.7 }}
+          className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-2xl mx-auto mt-16"
+        >
+          {stats.map((stat) => (
+            <GlassCard key={stat.label} className="text-center py-5">
+              <div className="font-display text-3xl md:text-4xl font-bold gradient-text mb-1">
+                <AnimatedCounter
+                  value={stat.value}
+                  suffix={stat.suffix}
+                  prefix={stat.prefix}
+                  inView={statsInView}
+                />
+              </div>
+              <p className="text-muted text-xs sm:text-sm">{stat.label}</p>
+            </GlassCard>
+          ))}
         </motion.div>
       </div>
 

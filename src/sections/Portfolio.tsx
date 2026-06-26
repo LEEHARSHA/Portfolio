@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ImageIcon } from "lucide-react";
 import { SectionHeading, GlassCard } from "../components/ui/SectionHeading";
 import { MagneticButton } from "../components/ui/MagneticButton";
 import { projects } from "../data/projects";
@@ -7,13 +7,13 @@ import { SectionDivider } from "../components/ui/BackgroundEffects";
 
 export function Portfolio() {
   return (
-    <section id="portfolio" className="relative section-padding">
+    <section id="projects" className="relative section-padding">
       <SectionDivider />
       <div className="max-w-7xl mx-auto">
         <SectionHeading
-          tag="Portfolio"
-          title="Featured Projects"
-          subtitle="Explore our latest work — digital products crafted with precision and passion."
+          tag="Projects"
+          title="Our Work"
+          subtitle="Real projects built for healthcare, hospitality, and fitness — crafted with care and modern technology."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -28,11 +28,12 @@ export function Portfolio() {
               style={{ perspective: 1000 }}
             >
               <GlassCard className="p-0 overflow-hidden group h-full flex flex-col">
-                <div className="relative h-52 overflow-hidden">
+                <div className="relative h-52 overflow-hidden bg-card">
                   <img
                     src={project.image}
-                    alt={project.title}
+                    alt={`${project.title} preview`}
                     loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent opacity-60" />
@@ -41,6 +42,10 @@ export function Portfolio() {
                     style={{ color: project.color }}
                   >
                     {project.category}
+                  </div>
+                  <div className="absolute bottom-4 right-4 flex items-center gap-1.5 px-2.5 py-1 rounded-full glass text-[10px] text-muted uppercase tracking-wider">
+                    <ImageIcon size={12} />
+                    Screenshot placeholder
                   </div>
                 </div>
 
@@ -51,12 +56,12 @@ export function Portfolio() {
                   </p>
 
                   <div className="flex flex-wrap gap-2 mb-5">
-                    {project.technologies.map((tech) => (
+                    {project.features.map((feature) => (
                       <span
-                        key={tech}
+                        key={feature}
                         className="px-2.5 py-1 rounded-md text-xs glass text-muted"
                       >
-                        {tech}
+                        {feature}
                       </span>
                     ))}
                   </div>

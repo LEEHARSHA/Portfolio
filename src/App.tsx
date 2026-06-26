@@ -10,18 +10,7 @@ import { useMediaQuery } from "./hooks/useInView";
 
 const About = lazy(() => import("./sections/About").then((m) => ({ default: m.About })));
 const Services = lazy(() => import("./sections/Services").then((m) => ({ default: m.Services })));
-const WhyChooseUs = lazy(() =>
-  import("./sections/WhyChooseUs").then((m) => ({ default: m.WhyChooseUs }))
-);
-const Technologies = lazy(() =>
-  import("./sections/Technologies").then((m) => ({ default: m.Technologies }))
-);
 const Portfolio = lazy(() => import("./sections/Portfolio").then((m) => ({ default: m.Portfolio })));
-const Process = lazy(() => import("./sections/Process").then((m) => ({ default: m.Process })));
-const Testimonials = lazy(() =>
-  import("./sections/Testimonials").then((m) => ({ default: m.Testimonials }))
-);
-const FAQ = lazy(() => import("./sections/FAQ").then((m) => ({ default: m.FAQ })));
 const Contact = lazy(() => import("./sections/Contact").then((m) => ({ default: m.Contact })));
 
 function SectionFallback() {
@@ -52,12 +41,7 @@ export default function App() {
           <Suspense fallback={<SectionFallback />}>
             <About />
             <Services />
-            <WhyChooseUs />
-            <Technologies />
             <Portfolio />
-            <Process />
-            <Testimonials />
-            <FAQ />
             <Contact />
           </Suspense>
         </main>

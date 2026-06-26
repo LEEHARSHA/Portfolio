@@ -1,6 +1,6 @@
 # RUKD Technologies — Portfolio
 
-Premium 3D animated company portfolio website for **RUKD Technologies**.
+Premium 3D animated portfolio for **RUKD Technologies** — Transforming Ideas into Powerful Digital Solutions.
 
 ## Tech Stack
 

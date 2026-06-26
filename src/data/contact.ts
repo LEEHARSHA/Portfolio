@@ -12,10 +12,34 @@ export interface SocialLink {
   icon: string;
 }
 
+export const companyTagline = "Transforming Ideas into Powerful Digital Solutions";
+
+export const contactEmail = "badigantileeharsha@gmail.com";
+
+export const contactPhones = ["8555948055", "9346507620"];
+
 export const contactInfo: ContactInfo[] = [
-  { type: "email", label: "Email Us", value: "hello@rukd.tech", href: "mailto:hello@rukd.tech", icon: "Mail" },
-  { type: "phone", label: "Call Us", value: "+1 (555) 123-4567", href: "tel:+15551234567", icon: "Phone" },
-  { type: "address", label: "Visit Us", value: "123 Innovation Drive, San Francisco, CA 94105", href: "#", icon: "MapPin" },
+  {
+    type: "email",
+    label: "Email",
+    value: contactEmail,
+    href: `mailto:${contactEmail}`,
+    icon: "Mail",
+  },
+  {
+    type: "phone-1",
+    label: "Phone",
+    value: contactPhones[0],
+    href: `tel:${contactPhones[0]}`,
+    icon: "Phone",
+  },
+  {
+    type: "phone-2",
+    label: "Phone",
+    value: contactPhones[1],
+    href: `tel:${contactPhones[1]}`,
+    icon: "Phone",
+  },
 ];
 
 export const socialLinks: SocialLink[] = [
@@ -26,9 +50,18 @@ export const socialLinks: SocialLink[] = [
 ];
 
 export const navLinks = [
+  { label: "Home", href: "#hero" },
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Process", href: "#process" },
+  { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
+];
+
+export const footerServices = [
+  "Website Development",
+  "Mobile App Development",
+  "AI Solutions",
+  "Custom Software Development",
+  "UI/UX Design",
+  "API Development",
 ];
